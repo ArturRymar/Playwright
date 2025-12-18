@@ -1,14 +1,18 @@
 {
-  "devDependencies": {
-    "prettier": "3.7.4"
-  },
   "name": "playwright",
   "version": "1.0.0",
   "description": "",
   "main": "test.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "playwright:ui": "npx playwright test --ui",
+    "playwright:headless": "npx playwright test"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3",
+    "prettier": "3.7.4"
+  }
 }
