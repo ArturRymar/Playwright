@@ -1,9 +1,10 @@
 import BaseElement from '../Elements/BaseElement';
 
 export default class RegistrationModal {
-  #baseElement = new BaseElement(this.page);
+  #baseElement;
   constructor(page) {
-    throws.page = page;
+    this.page = page;
+    this.#baseElement = new BaseElement(this.page);
   }
 
   get signUpModal() {

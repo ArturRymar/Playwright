@@ -5,7 +5,7 @@ export default class {
   getElement(selector) {
     return this.page.locator(selector);
   }
-  getElementByText(text) {
-    return this.page.getByText(text);
+  getElementByText(text, exact = true) {
+    return this.page.getByText(text, { exact: exact });
   }
 }
