@@ -1,11 +1,13 @@
+import { expect } from '@playwright/test';
 import BaseUrl from '../Base Configurations/baseUrl';
 import BaseElement from '../Elements/BaseElement';
 
 export default class HomePage extends BaseUrl {
-  #baseElement = new BaseElement(this.page);
-  constructor(page, url, auth) {
-    super(page, url, auth);
+  #baseElement;
+  constructor(page, url) {
+    super(page, url);
     this.page = page;
+    this.#baseElement = new BaseElement(this.page);
   }
   get signUpButton() {
     return this.#baseElement.getElement('.hero-descriptor_btn');
@@ -29,12 +31,12 @@ export default class HomePage extends BaseUrl {
     return this.#baseElement.getElement('.text-danger.btn-sidebar.sidebar_btn');
   }
 
-  async userLogin(email, password) {
+  async userLogin(email, password, page) {
     await this.loginEmail.type(email);
-    await expect(this.loginEmail).toHaveValue(email);
+    expect(this.loginEmail).toHaveValue(email);
     await this.loginPassword.type(password);
-    await expect(this.loginPassword).toHaveValue(password);
+    expect(this.loginPassword).toHaveValue(password);
     await this.loginButton.click();
-    await expect(page).toHaveURl('/panel/garage');
+    await expect(page).toHaveURL('https://qauto.forstudy.space/panel/garage');
   }
 }
