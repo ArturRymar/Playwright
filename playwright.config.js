@@ -1,13 +1,20 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
 // import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+//@ts-ignore
+function selectEnvData(env) {
+  const envData = dotenv.config({ path: `.env.${env}` });
+  return envData.parsed;
+}
+const devEnv = selectEnvData('dev');
+const stageEnv = selectEnvData('stage');
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -26,31 +33,51 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: 'https://qauto.forstudy.space/',
+    // baseURL: 'https://qauto.forstudy.space/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    httpCredentials: {
-      username: 'guest',
-      password: 'welcome2qauto',
-    },
+    // httpCredentials: {
+    //   username: 'guest',
+    //   password: 'welcome2qauto',
+    // },
   },
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'dev',
+      use: {
+        //@ts-ignore
+        baseURL: devEnv.BASE_URL,
+        httpCredentials: {
+          //@ts-ignore
+          username: devEnv.BROWSER_USERNAME,
+          //@ts-ignore
+          password: devEnv.PASSWORD,
+        },
+        ...devices['Desktop Chrome'],
+      },
     },
 
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'stage',
+      use: {
+        //@ts-ignore
+        baseURL: stageEnv.BASE_URL,
+        httpCredentials: {
+          //@ts-ignore
+          username: stageEnv.BROWSER_USERNAME,
+          //@ts-ignore
+          password: stageEnv.PASSWORD,
+        },
+        ...devices['Desktop Firefox'],
+      },
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
