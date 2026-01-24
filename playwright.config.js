@@ -53,7 +53,7 @@ export default defineConfig({
           //@ts-ignore
           username: devEnv.BROWSER_USERNAME,
           //@ts-ignore
-          password: devEnv.PASSWORD,
+          password: devEnv.BROWSER_PASSWORD,
         },
         ...devices['Desktop Chrome'],
       },
@@ -68,7 +68,7 @@ export default defineConfig({
           //@ts-ignore
           username: stageEnv.BROWSER_USERNAME,
           //@ts-ignore
-          password: stageEnv.PASSWORD,
+          password: stageEnv.BROWSER_PASSWORD,
         },
         ...devices['Desktop Firefox'],
       },

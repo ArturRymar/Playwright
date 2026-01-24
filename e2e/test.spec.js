@@ -19,12 +19,12 @@ test.describe('Registration suite', () => {
     await homePage.signUpButton.click();
   });
 
-  test.skip('Registration modal is opened', async () => {
+  test('Registration modal is opened', async () => {
     await expect(registrationModal.modalTitle).toHaveText('Registration');
   });
 
   //Name field
-  test.skip('Name field is required', async () => {
+  test('Name field is required', async () => {
     await registrationModal.signupName.clear();
     await registrationModal.modalTitle.click();
     await expect(
