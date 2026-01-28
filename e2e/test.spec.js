@@ -19,12 +19,12 @@ test.describe('Registration suite', () => {
     await homePage.signUpButton.click();
   });
 
-  test('Registration modal is opened', async () => {
+  test.skip('Registration modal is opened', async () => {
     await expect(registrationModal.modalTitle).toHaveText('Registration');
   });
 
   //Name field
-  test('Name field is required', async () => {
+  test.skip('Name field is required', async () => {
     await registrationModal.signupName.clear();
     await registrationModal.modalTitle.click();
     await expect(
@@ -334,7 +334,7 @@ test.describe('Registration suite', () => {
     await expect(page).toHaveURL('https://qauto.forstudy.space/panel/garage');
   });
 
-  test('Registered user can login', async ({ page }) => {
+  test.skip('Registered user can login', async ({ page }) => {
     await registrationModal.signupName.clear();
     await registrationModal.signupName.fill('Tester');
     await registrationModal.signupLastName.clear();

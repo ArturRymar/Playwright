@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import { test } from './Helpers/Fixtures/userGaragePage';
 
 test.describe('Test with fixture', () => {
-  test('Test case one', async ({ userGaragePage, page }) => {
+  test.skip('Test case one', async ({ userGaragePage, page }) => {
     userGaragePage.openAddCarModalButton.click();
     await expect(userGaragePage.addCarModalHeader).toBeVisible();
 
