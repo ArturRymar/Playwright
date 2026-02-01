@@ -32,3 +32,5 @@ jobs:
     # run playwright test
       - name: Run Playwright tests
         run: npm run playwright:headless:Fixture
+        env:
+          HOME: /root
