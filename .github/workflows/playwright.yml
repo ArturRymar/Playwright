@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     # add Docker
     container:
-        image: mcp/playwright:latest
+        image: mcp/mcp-playwright:latest
     steps:
       # open repository and clone it into our container
       - name: Checkout
