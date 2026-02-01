@@ -27,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
     # install browsers (if we use docker this step is not need if browsers are pre-installed in the image)
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      # - name: Install Playwright Browsers
+      #   run: npx playwright install --with-deps
     # run playwright test
       - name: Run Playwright tests
         run: npm run playwright:headless:Fixture
