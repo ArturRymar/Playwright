@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     # add Docker
     container:
-        image: mcp/playwright
+        image: mcp/playwright:latest
     steps:
       # open repository and clone it into our container
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
       # install node (as we use docker this step is not need, node is pre-installed in the current iamge)
     # - name: Install node
     #   uses: actions/setup-node@v6
