@@ -9,12 +9,12 @@ import dotenv from 'dotenv';
 // import path from 'path';
 
 //@ts-ignore
-function selectEnvData(env) {
-  const envData = dotenv.config({ path: `.env.${env}` });
-  return envData.parsed;
-}
-const devEnv = selectEnvData('dev');
-const stageEnv = selectEnvData('stage');
+// function selectEnvData(env) {
+//   const envData = dotenv.config({ path: `.env.${env}` });
+//   return envData.parsed;
+// }
+// const devEnv = selectEnvData('dev');
+// const stageEnv = selectEnvData('stage');
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -48,12 +48,18 @@ export default defineConfig({
       name: 'dev',
       use: {
         //@ts-ignore
-        baseURL: devEnv.BASE_URL,
+        // baseURL: devEnv.BASE_URL,
+        baseURL: "https://qauto2.forstudy.space/",
+        // httpCredentials: {
+        //   //@ts-ignore
+        //   username: devEnv.BROWSER_USERNAME,
+        //   //@ts-ignore
+        //   password: devEnv.BROWSER_PASSWORD,
+        // },
         httpCredentials: {
-          //@ts-ignore
-          username: devEnv.BROWSER_USERNAME,
-          //@ts-ignore
-          password: devEnv.BROWSER_PASSWORD,
+          username:"guest",
+          password: "welcome2qauto"
+
         },
         ...devices['Desktop Chrome'],
       },
@@ -63,12 +69,17 @@ export default defineConfig({
       name: 'stage',
       use: {
         //@ts-ignore
-        baseURL: stageEnv.BASE_URL,
+        baseURL: "https://qauto.forstudy.space/",
+        // httpCredentials: {
+        //   //@ts-ignore
+        //   username: stageEnv.BROWSER_USERNAME,
+        //   //@ts-ignore
+        //   password: stageEnv.BROWSER_PASSWORD,
+        // }
         httpCredentials: {
-          //@ts-ignore
-          username: stageEnv.BROWSER_USERNAME,
-          //@ts-ignore
-          password: stageEnv.BROWSER_PASSWORD,
+          username:"guest",
+          password: "welcome2qauto"
+
         },
         ...devices['Desktop Firefox'],
       },
