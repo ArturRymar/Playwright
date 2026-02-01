@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "playwright:ui": "npx playwright test --ui",
-    "playwright:headless": "npx playwright test"
+    "playwright:headless": "npx playwright test",
+    "playwright:headless:Fixture": "npx playwright test testFixture.spec.js"
   },
   "author": "",
   "license": "ISC",
